@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en" class="is-preloading">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Alpha Vital Elite IV</title>
+<meta name="theme-color" content="#F6F1E7">
+<meta name="format-detection" content="telephone=yes">
+
+<!-- ============================================================
+     FONTS
+     Prata            display serif — Didone contrast, cuts hard on video
+     Cormorant        italic accent — the living word, pull-quotes, plate notes
+     Marcellus        engraved caps — labels, matches the wordmark
+     Instrument Sans  body + UI
+     Syne             micro-labels — chips, category, actions
+     Archivo          tabular figures — prices, durations, the counter
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="image" href="logo.png" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/hero-poster.webp" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Cormorant:ital,wght@0,500;1,400;1,500;1,600&family=Marcellus&family=Instrument+Sans:wght@400;500;600&family=Syne:wght@500;600;700&family=Archivo:wght@500;600&display=swap" rel="stylesheet">
+
+<!-- ICONS — Phosphor web font. Regular needs the base class: <i class="ph ph-clock"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<!-- fill and duotone are below the fold only — load without blocking first paint -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/duotone/style.css" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+</noscript>
+
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="styles.css">
+
+<!-- If scripting is off, the preloader must not become a wall -->
+<noscript><style>
+  .pre { display: none !important; }
+  html.is-preloading { overflow: auto !important; }
+  [data-rise], .hero__title .word > span { opacity: 1 !important; transform: none !important; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .loop__stack { display: none !important; }
+  .loop__fallback { display: inline !important; }
+  .shelf__viewport { height: auto !important; display: block !important; overflow: visible !important; padding-bottom: 0 !important; }
+  .shelf__track { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; gap: 3rem !important; transform: none !important; }
+  .plate { width: 100% !important; }
+</style></noscript>
+</head>
+
+<body>
+
+<!-- ==============================================================
+     PRELOADER
+     ============================================================== -->
+<div class="pre" id="pre">
+  <div class="pre__core">
+    <img class="pre__mark" src="logo.png" alt="Alpha Vital Elite IV" width="640" height="592">
+    <div class="pre__meter">
+      <span class="pre__bar" id="preBar"></span>
+      <span class="pre__pct" id="prePct">0</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==============================================================
+     HEADER
+
+     NAV ORDER — Home · Infusions (flyout) · Dr. Aronov · Research · Contact
+
+     THE ACTIVE STATE. Every link carries `is-here` in the markup for the page
+     it belongs to, so the correct item is lit before a single byte of JS runs.
+     The Trail module in script.js then re-derives it from location.pathname,
+     which is what makes the ten drip pages work without hand-editing each one:
+     on /drips/fatty-liver-support.html it lights that row inside the flyout
+     AND keeps "Infusions" lit as the parent of the trail.
+     ============================================================== -->
+<header class="head" id="head">
+  <div class="head__rail">
+
+    <a class="head__mark" href="index.html">
+      <img src="logo.png" alt="Alpha Vital Elite IV" width="240" height="222">
+    </a>
+
+    <nav class="head__nav" id="headNav">
+
+      <a class="head__link is-here" href="index.html" aria-current="page">Home</a>
+
+      <!-- INFUSIONS + THE FLYOUT — CSS-only: opens on hover, stays open on
+           keyboard focus (:focus-within). The link itself still navigates. -->
+      <div class="head__drop">
+        <a class="head__link" href="#infusions">
+          Infusions <i class="ph ph-caret-down head__dcaret"></i>
+        </a>
+
+        <div class="head__panel">
+          <p class="head__panel-eyebrow">The Infusion Menu</p>
+
+          <div class="head__panel-grid">
+            <a class="hd-item" href="#" data-soon style="--tone:#5B7098">
+              <i>I</i><span>GLyNAC Healthy Aging</span><b>$350</b>
+            </a>
+            <a class="hd-item" href="#" data-soon style="--tone:#7FA08C">
+              <i>II</i><span>Glutathione IV Injection</span><b>$100</b>
+            </a>
+            <a class="hd-item" href="#" data-soon style="--tone:#4F7D5E">
+              <i>III</i><span>Antioxidant &times;3 Reset</span><b>$400</b>
+            </a>
+            <a class="hd-item" href="#" data-soon style="--tone:#D9982A">
+              <i>IV</i><span>Immun-O-Boost IV Support</span><b>$550</b>
+            </a>
+            <a class="hd-item" href="#" data-soon style="--tone:#35707F">
+              <i>V</i><span>Revive IV Support</span><b>$525</b>
+            </a>
+            <a class="hd-item" href="#" data-soon style="--tone:#B34E37">
+              <i>VI</i><span>LIQUIXO Muscle Recovery</span><b>$395</b>
+            </a>
+            <a class="hd-item" href="#" data-soon style="--tone:#7A5F98">
+              <i>VII</i><span>Stress &amp; Brain Wellness</span><b>$500</b>
+            </a>
+            <a class="hd-item" href="#" data-soon style="--tone:#8C6239">
+              <i>VIII</i><span>Joint &amp; Skin Wellness</span><b>$650</b>
+            </a>
+            <a class="hd-item" href="#" data-soon style="--tone:#5F7A55">
+              <i>IX</i><span>Fatty Liver Support</span><b>$650</b>
+            </a>
+            <a class="hd-item" href="#" data-soon style="--tone:#C1963F">
+              <i>X</i><span>Customized IV Infusion</span><b>Consult</b>
+            </a>
+          </div>
+
+          <a class="head__panel-foot" href="#infusions">
+            <span>View the full menu</span><i class="ph ph-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <a class="head__link" href="#physician">Dr.&nbsp;Aronov</a>
+      <a class="head__link" href="#" data-soon>Research</a>
+      <a class="head__link" href="#inquire">Contact</a>
+    </nav>
+
+    <div class="head__actions">
+      <a class="head__tel" href="tel:+19292010740">929&#8202;·&#8202;201&#8202;·&#8202;0740</a>
+      <a class="btn btn--forest head__cta" href="#" data-soon data-magnetic><span>Begin screening</span></a>
+      <button class="head__burger" id="burger" type="button" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- ==============================================================
+     MOBILE MENU
+     Same five destinations, same active grammar. The row for the current
+     page turns gold and carries a dot; on a drip page the Infusions
+     accordion is opened by Trail so the lit row is visible without a tap.
+     ============================================================== -->
+<div class="menu" id="menu">
+  <div class="menu__inner">
+    <nav class="menu__nav">
+
+      <a class="is-here" href="index.html" aria-current="page"><i>i.</i><em>Home</em></a>
+
+      <!-- INFUSIONS ACCORDION — native <details>, no JS. Tapping the row
+           opens the sublist; tapping any link inside still closes the menu
+           through the existing Menu class. -->
+      <details class="menu__drop">
+        <summary>
+          <i>ii.</i><em>Infusions</em>
+          <b class="menu__dcaret"><span class="ph ph-caret-down"></span></b>
+        </summary>
+        <div class="menu__sub">
+          <a class="menu__sub-all" href="#infusions">
+            <span>The full menu</span><span class="ph ph-arrow-right"></span>
+          </a>
+          <a class="menu__sub-item" href="#" data-soon style="--tone:#5B7098"><i>I</i>GLyNAC Healthy Aging</a>
+          <a class="menu__sub-item" href="#" data-soon style="--tone:#7FA08C"><i>II</i>Glutathione IV Injection</a>
+          <a class="menu__sub-item" href="#" data-soon style="--tone:#4F7D5E"><i>III</i>Antioxidant &times;3 Reset</a>
+          <a class="menu__sub-item" href="#" data-soon style="--tone:#D9982A"><i>IV</i>Immun-O-Boost IV Support</a>
+          <a class="menu__sub-item" href="#" data-soon style="--tone:#35707F"><i>V</i>Revive IV Support</a>
+          <a class="menu__sub-item" href="#" data-soon style="--tone:#B34E37"><i>VI</i>LIQUIXO Muscle Recovery</a>
+          <a class="menu__sub-item" href="#" data-soon style="--tone:#7A5F98"><i>VII</i>Stress &amp; Brain Wellness</a>
+          <a class="menu__sub-item" href="#" data-soon style="--tone:#8C6239"><i>VIII</i>Joint &amp; Skin Wellness</a>
+          <a class="menu__sub-item" href="#" data-soon style="--tone:#5F7A55"><i>IX</i>Fatty Liver Support</a>
+          <a class="menu__sub-item" href="#" data-soon style="--tone:#C1963F"><i>X</i>Customized IV Infusion</a>
+        </div>
+      </details>
+
+      <a href="#physician"><i>iii.</i><em>Dr. Aronov</em></a>
+      <a href="#" data-soon><i>iv.</i><em>Research</em></a>
+      <a href="#inquire"><i>v.</i><em>Contact</em></a>
+    </nav>
+    <div class="menu__foot">
+      <a class="btn btn--gold" href="#" data-soon><span>Begin screening</span></a>
+      <a class="menu__tel" href="tel:+19292010740">929 · 201 · 0740</a>
+      <p class="menu__addr">79-01 Metropolitan Avenue, Middle Village, NY 11379<br>Queens · Brooklyn · Long Island</p>
+    </div>
+  </div>
+</div>
+
+
+<main id="main">
+
+<!-- ==============================================================
+     HERO
+     Copy is Dr. Aronov's current approved wording. "Held to hospital
+     standards" and "hospital-level safety" are gone and stay gone.
+     ============================================================== -->
+<section class="hero" id="hero">
+
+  <div class="hero__media">
+    <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="metadata"
+           poster="/assets/images/hero-poster.webp">
+      <source src="https://github.com/Elanstech/precisionmedicaliv/releases/download/Hero/hero.mp4" type="video/mp4">
+    </video>
+    <span class="hero__scrim"></span>
+    <span class="hero__grain"></span>
+  </div>
+
+  <div class="hero__folio" data-rise style="--i:1">
+    <span>Est. Middle Village · Queens, NY</span>
+    <span class="hero__folio-mid">A Physician-Directed Practice</span>
+    <span>Appointments Only</span>
+  </div>
+
+  <div class="hero__stage">
+    <p class="hero__kicker" data-rise style="--i:2">
+      <span class="hero__rule"></span>
+      Individual Screening &middot; Tailored Dosing &middot; Infusion Monitoring
+    </p>
+
+    <h1 class="hero__title">
+      <span class="word" data-rise style="--i:3"><span>Physician-Directed</span></span>
+      <span class="word" data-rise style="--i:4"><span>IV Care.</span></span>
+    </h1>
+
+    <!-- Nine categories. Joint and Skin are ONE infusion and read as one
+         line, so the loop never implies a tenth signature formula. -->
+    <p class="hero__for" data-rise style="--i:5">
+      <span class="hero__for-lead">Infusions for</span>
+      <span class="loop" id="wordLoop">
+        <span class="loop__fallback">Healthy Aging</span>
+        <span class="loop__stack">
+          <span class="is-on">Healthy Aging</span>
+          <span>Immune Support</span>
+          <span>Muscle Recovery</span>
+          <span>Antioxidant Support</span>
+          <span>Glutathione IV Therapy</span>
+          <span>Joint &amp; Skin Support</span>
+          <span>Liver Support</span>
+          <span>Post-Illness Recovery Support</span>
+          <span>Mind &amp; Focus Support</span>
+        </span>
+      </span>
+    </p>
+
+    <div class="hero__row" data-rise style="--i:6">
+      <p class="hero__dek">
+        Dr. Violeta Aronov, DO, a board-certified anesthesiologist with nearly two decades of
+        clinical experience, reviews each patient&rsquo;s health information to determine whether
+        IV therapy is appropriate. Following her assessment, she selects the appropriate
+        supportive care and personally administers and monitors the infusion from start to finish.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--gold btn--lg" href="#" data-soon data-magnetic>
+          <span>Begin screening</span>
+          <i class="ph ph-arrow-right"></i>
+        </a>
+        <a class="btn btn--line btn--lg" href="#infusions"><span>View infusions</span></a>
+      </div>
+    </div>
+
+    <p class="hero__legal" data-rise style="--i:7">
+      IV services are intended as supportive care and are designed to complement&mdash;not
+      replace&mdash;appropriate primary or specialty medical treatment. Not every patient is
+      eligible. Individual results may vary, and no outcome is guaranteed.
+    </p>
+  </div>
+
+  <div class="hero__foot" data-rise style="--i:8">
+    <p class="hero__cred">Appointments only &bull; Physician review and eligibility determination required</p>
+    <a class="hero__scroll" href="#infusions"><span>Scroll</span><i></i></a>
+  </div>
+
+</section>
+
+
+<!-- ==============================================================
+     THE SHELF  (#infusions)   —   CHAPTER I
+     Nine signature infusions + one customized option = ten plates.
+     Category names, order and formulations per Dr. Aronov's 17 Aug email.
+     Quercetin and Curcumin are off the menu. Language rule: "supports" and
+     "designed to complement" — never treats, cures, repairs, or guarantees.
+     ============================================================== -->
+<section class="shelf" id="infusions">
+  <span class="shelf__wash"></span>
+  <span class="shelf__mesh"></span>
+
+  <header class="shelf__head">
+
+    <div class="rubric" data-reveal>
+      <span class="rubric__no">Chapter I</span>
+      <span class="rubric__name">Signature IV Infusions</span>
+      <span class="rubric__rule"></span>
+    </div>
+
+    <h2 class="shelf__title" data-reveal>
+      Signature infusions,<br><em>individually reviewed.</em>
+    </h2>
+
+    <div class="shelf__deck">
+      <p class="shelf__lede" data-reveal>
+        Each signature infusion is a thoughtfully designed starting point&mdash;not a
+        one-size-fits-all formula or a promise of results. Before scheduling, Dr.&nbsp;Aronov
+        reviews the health information you provide, including your medical history, medications,
+        allergies, and individual needs, to determine whether you may be eligible for IV support.
+        Based on that review, she may recommend a signature infusion, modify the formula, or
+        create a customized option. IV support is intended to complement&mdash;not
+        replace&mdash;care from your primary care physician or specialist. Every infusion is
+        physician-reviewed and directed.
+      </p>
+
+      <div class="shelf__stats" data-reveal>
+        <div class="shelf__stat"><b>9</b><span>Signature IV infusions</span></div>
+        <div class="shelf__stat"><b>1</b><span>Customized infusion option — based on individual needs</span></div>
+        <div class="shelf__stat shelf__stat--word"><b>$100 Physician Review Fee</b><span>Required before scheduling to determine whether IV support is appropriate for you. If approved, the $100 fee is applied to your first infusion.</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FILTERS — desktop gets eleven pills; the phone gets the same eleven as
+       one select, because wrapped to five rows they pushed the whole page
+       down. Both write to the same Shelf.applyFilter(), so there is one
+       code path and the two can never disagree. -->
+  <div class="shelf__filters" data-reveal>
+    <button class="shelf__pill is-on" type="button" data-filter="all"><i class="ph ph-squares-four"></i> Everything <sup>10</sup></button>
+    <button class="shelf__pill" type="button" data-filter="healthyaging"><i class="ph ph-infinity"></i> Healthy Aging</button>
+    <button class="shelf__pill" type="button" data-filter="immune"><i class="ph ph-shield-check"></i> Immune Support</button>
+    <button class="shelf__pill" type="button" data-filter="muscle"><i class="ph ph-barbell"></i> Muscle Recovery</button>
+    <button class="shelf__pill" type="button" data-filter="antioxidant"><i class="ph ph-atom"></i> Antioxidant Support</button>
+    <button class="shelf__pill" type="button" data-filter="glutathione"><i class="ph ph-drop"></i> Glutathione IV Therapy</button>
+    <button class="shelf__pill" type="button" data-filter="joint"><i class="ph ph-bone"></i> Joint &amp; Skin Support</button>
+    <button class="shelf__pill" type="button" data-filter="liver"><i class="ph ph-leaf"></i> Liver Support</button>
+    <button class="shelf__pill" type="button" data-filter="recovery"><i class="ph ph-arrows-clockwise"></i> Post-Illness Recovery</button>
+    <button class="shelf__pill" type="button" data-filter="mind"><i class="ph ph-brain"></i> Mind &amp; Focus Support</button>
+    <button class="shelf__pill" type="button" data-filter="custom"><i class="ph ph-pen-nib"></i> Customized IV Infusion</button>
+  </div>
+
+  <div class="shelf__jump" data-reveal>
+    <i class="ph ph-funnel-simple shelf__jump-ico"></i>
+    <select class="shelf__select" id="shelfJump">
+      <option value="all">Everything &mdash; 10 infusions</option>
+      <option value="healthyaging">Healthy Aging</option>
+      <option value="immune">Immune Support</option>
+      <option value="muscle">Muscle Recovery</option>
+      <option value="antioxidant">Antioxidant Support</option>
+      <option value="glutathione">Glutathione IV Therapy</option>
+      <option value="joint">Joint &amp; Skin Support</option>
+      <option value="liver">Liver Support</option>
+      <option value="recovery">Post-Illness Recovery</option>
+      <option value="mind">Mind &amp; Focus Support</option>
+      <option value="custom">Customized IV Infusion</option>
+    </select>
+    <i class="ph ph-caret-down shelf__caret"></i>
+  </div>
+
+  <div class="shelf__pin" id="shelfPin">
+    <div class="shelf__viewport" id="shelfViewport">
+      <ol class="shelf__track" id="shelfTrack">
+
+        <li class="plate" data-tags="healthyaging" style="--tone:var(--t-aging);--i:0">
+          <a class="plate__bag" href="#" data-soon tabindex="-1">
+            <span class="plate__pole"></span>
+            <img src="assets/drips/glynac.png" alt="" loading="lazy" decoding="async" width="524" height="1478">
+            <span class="plate__cast"></span>
+          </a>
+
+          <div class="plate__body">
+            <header class="plate__head">
+              <p class="plate__cat"><i class="ph ph-infinity"></i> Healthy Aging</p>
+              <span class="plate__no">I</span>
+            </header>
+
+            <h3 class="plate__name"><a href="#" data-soon>GLyNAC Healthy Aging IV</a></h3>
+            <p class="plate__note">Glycine and N-acetylcysteine help supply two of the building blocks the body uses to make glutathione.</p>
+
+            <ul class="plate__ing"><li>Hydration Fluid</li><li>Glycine</li><li>N-Acetylcysteine (NAC)</li></ul>
+
+            <div class="plate__foot">
+              <p class="plate__clock"><i class="ph ph-clock"></i> 60&ndash;75 min</p>
+              <div class="plate__deal">
+                <p class="plate__price"><b>$350</b><span>per session</span></p>
+                <a class="plate__go" href="#" data-soon>Protocol <i class="ph ph-arrow-up-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="plate" data-tags="glutathione" style="--tone:var(--t-gluta);--i:1">
+          <a class="plate__bag" href="#" data-soon tabindex="-1">
+            <span class="plate__pole"></span>
+            <img src="assets/drips/glutathione.png" alt="" loading="lazy" decoding="async" width="524" height="1478">
+            <span class="plate__cast"></span>
+          </a>
+
+          <div class="plate__body">
+            <header class="plate__head">
+              <p class="plate__cat"><i class="ph ph-drop"></i> Glutathione IV Therapy</p>
+              <span class="plate__no">II</span>
+            </header>
+
+            <h3 class="plate__name"><a href="#" data-soon>Glutathione IV Injection</a></h3>
+            <p class="plate__note">Replenish your body&rsquo;s natural glutathione &mdash; supporting antioxidant defense, detoxification, and healthy-looking skin.</p>
+
+            <ul class="plate__ing"><li>Glutathione</li></ul>
+
+            <div class="plate__foot">
+              <p class="plate__clock"><i class="ph ph-clock"></i> 15 min push &middot; 30 min visit</p>
+              <div class="plate__deal">
+                <p class="plate__price"><b>$100</b><span>per session</span></p>
+                <a class="plate__go" href="#" data-soon>Protocol <i class="ph ph-arrow-up-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="plate" data-tags="antioxidant" style="--tone:var(--t-antiox);--i:2">
+          <a class="plate__bag" href="#" data-soon tabindex="-1">
+            <span class="plate__pole"></span>
+            <img src="assets/drips/antioxidant.png" alt="" loading="lazy" decoding="async" width="524" height="1478">
+            <span class="plate__cast"></span>
+          </a>
+
+          <div class="plate__body">
+            <header class="plate__head">
+              <p class="plate__cat"><i class="ph ph-atom"></i> Antioxidant Support</p>
+              <span class="plate__no">III</span>
+            </header>
+
+            <h3 class="plate__name"><a href="#" data-soon>Antioxidant &times;3 Reset IV</a></h3>
+            <p class="plate__note">Many chronic inflammatory conditions are associated with increased oxidative stress. Antioxidant &times;3 Reset combines three antioxidants: Vitamin&nbsp;C, Glutathione and Alpha-Lipoic Acid working as one system to support the body&rsquo;s antioxidant defenses.</p>
+
+            <ul class="plate__ing"><li>Hydration Fluid</li><li>Vitamin&nbsp;C</li><li>Glutathione</li><li>Alpha-Lipoic Acid</li></ul>
+
+            <div class="plate__foot">
+              <p class="plate__clock"><i class="ph ph-clock"></i> 75 min</p>
+              <div class="plate__deal">
+                <p class="plate__price"><b>$400</b><span>per session</span></p>
+                <a class="plate__go" href="#" data-soon>Protocol <i class="ph ph-arrow-up-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="plate" data-tags="immune" style="--tone:var(--t-immune);--i:3">
+          <a class="plate__bag" href="#" data-soon tabindex="-1">
+            <span class="plate__pole"></span>
+            <img src="assets/drips/immuneoboost.png" alt="" loading="lazy" decoding="async" width="524" height="1478">
+            <span class="plate__cast"></span>
+          </a>
+
+          <div class="plate__body">
+            <header class="plate__head">
+              <p class="plate__cat"><i class="ph ph-shield-check"></i> Immune Support</p>
+              <span class="plate__no">IV</span>
+            </header>
+
+            <h3 class="plate__name"><a href="#" data-soon>Immun-O-Boost IV Support</a></h3>
+            <p class="plate__note">Proactive nutritional support while you are well &mdash; not during acute illness &mdash; to support normal immune function, antioxidant defense, cellular energy, and everyday recovery.</p>
+
+            <ul class="plate__ing"><li>B-Complex &amp; Minerals</li><li>Amino Acids</li><li>Vitamin&nbsp;C</li><li>Glutathione</li><li>Alpha-Lipoic Acid</li><li>Zinc</li></ul>
+
+            <div class="plate__foot">
+              <p class="plate__clock"><i class="ph ph-clock"></i> 2 h 30</p>
+              <div class="plate__deal">
+                <p class="plate__price"><b>$550</b><span>per session</span></p>
+                <a class="plate__go" href="#" data-soon>Protocol <i class="ph ph-arrow-up-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="plate" data-tags="recovery" style="--tone:var(--t-recovery);--i:4">
+          <a class="plate__bag" href="#" data-soon tabindex="-1">
+            <span class="plate__pole"></span>
+            <img src="assets/drips/revive.png" alt="" loading="lazy" decoding="async" width="524" height="1478">
+            <span class="plate__cast"></span>
+          </a>
+
+          <div class="plate__body">
+            <header class="plate__head">
+              <p class="plate__cat"><i class="ph ph-arrows-clockwise"></i> Post-Illness Recovery</p>
+              <span class="plate__no">V</span>
+            </header>
+
+            <h3 class="plate__name"><a href="#" data-soon>Revive IV Support</a></h3>
+            <p class="plate__note">Replenish. Recharge. Revive. Hydration and targeted nutritional replenishment for flexible, as-needed support after illness, surgery, or prolonged physical stress.</p>
+
+            <ul class="plate__ing"><li>Hydration Fluid</li><li>B-Complex</li><li>Amino Acids</li><li>Electrolytes</li><li>Alpha-Lipoic Acid</li><li>Vitamin&nbsp;C</li><li>Glutathione</li></ul>
+
+            <div class="plate__foot">
+              <p class="plate__clock"><i class="ph ph-clock"></i> 2 h 15</p>
+              <div class="plate__deal">
+                <p class="plate__price"><b>$525</b><span>per session</span></p>
+                <a class="plate__go" href="#" data-soon>Protocol <i class="ph ph-arrow-up-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="plate" data-tags="muscle" style="--tone:var(--t-muscle);--i:5">
+          <a class="plate__bag" href="#" data-soon tabindex="-1">
+            <span class="plate__pole"></span>
+            <img src="assets/drips/liquixo.png" alt="" loading="lazy" decoding="async" width="524" height="1478">
+            <span class="plate__cast"></span>
+          </a>
+
+          <div class="plate__body">
+            <header class="plate__head">
+              <p class="plate__cat"><i class="ph ph-barbell"></i> Muscle Recovery</p>
+              <span class="plate__no">VI</span>
+            </header>
+
+            <h3 class="plate__name"><a href="#" data-soon>LIQUIXO Muscle Recovery IV</a></h3>
+            <p class="plate__note">Lean-muscle and recovery support during GLP-based and other medically supervised weight-loss programs, and during periods of reduced nutritional intake, aging, illness, or prolonged physical stress. LiquiXO combines a complete 20-amino-acid blend with exosome technology.</p>
+
+            <ul class="plate__ing"><li>Hydration Fluid</li><li>20 Amino Acid Blend</li></ul>
+
+            <div class="plate__foot">
+              <p class="plate__clock"><i class="ph ph-clock"></i> 45 min</p>
+              <div class="plate__deal">
+                <p class="plate__price"><b>$395</b><span>per session</span></p>
+                <a class="plate__go" href="#" data-soon>Protocol <i class="ph ph-arrow-up-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="plate" data-tags="mind" style="--tone:var(--t-mind);--i:6">
+          <a class="plate__bag" href="#" data-soon tabindex="-1">
+            <span class="plate__pole"></span>
+            <img src="assets/drips/brainwellness.png" alt="" loading="lazy" decoding="async" width="524" height="1478">
+            <span class="plate__cast"></span>
+          </a>
+
+          <div class="plate__body">
+            <header class="plate__head">
+              <p class="plate__cat"><i class="ph ph-brain"></i> Mind &amp; Focus Support</p>
+              <span class="plate__no">VII</span>
+            </header>
+
+            <h3 class="plate__name"><a href="#" data-soon>Stress &amp; Brain Wellness IV</a></h3>
+            <p class="plate__note">Brain fuel for stress, mental burnout, and demanding lifestyles &mdash; with B vitamins supporting brain energy, neurotransmitter production, and healthy homocysteine metabolism linked to cognitive decline. Taurine supports neuronal balance, while alpha-lipoic acid crosses the blood&ndash;brain barrier to support antioxidant defenses.</p>
+
+            <ul class="plate__ing"><li>Hydration Fluid</li><li>Vitamin B1</li><li>Vitamin B6</li><li>Vitamin B12</li><li>Alpha-Lipoic Acid</li><li>Taurine</li></ul>
+
+            <div class="plate__foot">
+              <p class="plate__clock"><i class="ph ph-clock"></i> 1 h 30</p>
+              <div class="plate__deal">
+                <p class="plate__price"><b>$500</b><span>per session</span></p>
+                <a class="plate__go" href="#" data-soon>Protocol <i class="ph ph-arrow-up-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="plate" data-tags="joint" style="--tone:var(--t-joint);--i:7">
+          <a class="plate__bag" href="#" data-soon tabindex="-1">
+            <span class="plate__pole"></span>
+            <img src="assets/drips/jointsupport.png" alt="" loading="lazy" decoding="async" width="524" height="1478">
+            <span class="plate__cast"></span>
+          </a>
+
+          <div class="plate__body">
+            <header class="plate__head">
+              <p class="plate__cat"><i class="ph ph-bone"></i> Joint Support &amp; Skin Health</p>
+              <span class="plate__no">VIII</span>
+            </header>
+
+            <h3 class="plate__name"><a href="#" data-soon>Joint &amp; Skin Wellness IV</a></h3>
+            <p class="plate__note">Amino acids and vitamin&nbsp;C support collagen formation for cartilage and skin, while magnesium, trace minerals, B vitamins, and antioxidants support cellular function and antioxidant defenses. Designed to complement &mdash; not replace &mdash; medical care for chronic joint and skin conditions such as arthritis and psoriasis.</p>
+
+            <ul class="plate__ing"><li>Hydration Fluid</li><li>Magnesium</li><li>Trace Minerals</li><li>B-Complex</li><li>Collagen Amino Acids</li><li>N-Acetylcysteine</li><li>Alpha-Lipoic Acid</li><li>Vitamin&nbsp;C</li><li>Glutathione</li></ul>
+
+            <div class="plate__foot">
+              <p class="plate__clock"><i class="ph ph-clock"></i> 2 h 30</p>
+              <div class="plate__deal">
+                <p class="plate__price"><b>$650</b><span>per session</span></p>
+                <a class="plate__go" href="#" data-soon>Protocol <i class="ph ph-arrow-up-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="plate" data-tags="liver" style="--tone:var(--t-liver);--i:8">
+          <a class="plate__bag" href="#" data-soon tabindex="-1">
+            <span class="plate__pole"></span>
+            <img src="assets/drips/liversupport.png" alt="" loading="lazy" decoding="async" width="524" height="1478">
+            <span class="plate__cast"></span>
+          </a>
+
+          <div class="plate__body">
+            <header class="plate__head">
+              <p class="plate__cat"><i class="ph ph-leaf"></i> Liver Support</p>
+              <span class="plate__no">IX</span>
+            </header>
+
+            <h3 class="plate__name"><a href="#" data-soon>Fatty Liver Support IV</a></h3>
+            <p class="plate__note">Elevated liver enzymes may reflect liver-cell stress, oxidative burden, or changes in bile handling. Glycine and taurine support bile-acid processing, while glycine and NAC support glutathione production. Vitamin&nbsp;C and alpha-lipoic acid further support the liver&rsquo;s antioxidant defenses.</p>
+
+            <ul class="plate__ing"><li>Hydration Fluid</li><li>Magnesium</li><li>Trace Minerals</li><li>B-Complex</li><li>Glycine</li><li>Taurine</li><li>N-Acetylcysteine</li><li>Alpha-Lipoic Acid</li><li>Vitamin&nbsp;C</li><li>Glutathione</li></ul>
+
+            <div class="plate__foot">
+              <p class="plate__clock"><i class="ph ph-clock"></i> 3 h</p>
+              <div class="plate__deal">
+                <p class="plate__price"><b>$650</b><span>per session</span></p>
+                <a class="plate__go" href="#" data-soon>Protocol <i class="ph ph-arrow-up-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="plate" data-tags="custom" style="--tone:var(--t-custom);--i:9">
+          <a class="plate__bag" href="#" data-soon tabindex="-1">
+            <span class="plate__pole"></span>
+            <img src="assets/drips/customized.png" alt="" loading="lazy" decoding="async" width="524" height="1478">
+            <span class="plate__cast"></span>
+          </a>
+
+          <div class="plate__body">
+            <header class="plate__head">
+              <p class="plate__cat"><i class="ph ph-pen-nib"></i> Customized IV Infusion</p>
+              <span class="plate__no">X</span>
+            </header>
+
+            <h3 class="plate__name"><a href="#" data-soon>Customized IV Infusion</a></h3>
+            <p class="plate__note">We listen to your concerns and review your medical history. When appropriate &mdash; and safely within the limits of our office &mdash; Dr.&nbsp;Aronov may offer a customized infusion.</p>
+
+            <ul class="plate__ing"><li>Based on individual needs</li><li>Private consultation</li></ul>
+
+            <div class="plate__foot">
+              <p class="plate__clock"><i class="ph ph-clock"></i> Individually determined</p>
+              <div class="plate__deal">
+                <p class="plate__price"><b>By consultation</b><span>quoted after screening</span></p>
+                <a class="plate__go" href="#" data-soon>Protocol <i class="ph ph-arrow-up-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ol>
+
+      <!-- rail furniture — lives inside the pinned element so it stays on
+           screen for the whole horizontal run -->
+      <div class="shelf__rail">
+        <p class="shelf__counter"><b id="shelfNow">01</b> <span class="shelf__counter-sep">/</span> <span id="shelfTotal">10</span></p>
+        <span class="shelf__meter"><i id="shelfMeter"></i></span>
+
+        <div class="shelf__arrows">
+          <button class="shelf__arrow" id="shelfPrev" type="button" disabled>
+            <i class="ph ph-arrow-left"></i>
+          </button>
+          <button class="shelf__arrow" id="shelfNext" type="button">
+            <i class="ph ph-arrow-right"></i>
+          </button>
+        </div>
+
+        <span class="shelf__hint">Keep scrolling <i class="ph ph-arrow-right"></i></span>
+        <button class="shelf__skip" id="shelfSkip" type="button">
+          <span>Skip this section</span><i class="ph ph-arrow-down"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ==============================================================
+     HOW A VISIT WORKS  (#visit)   —   CHAPTER II
+     Four beats, one rule, one honest line. Kept deliberately short — the
+     surrounding sections are long, and this one only has to make the
+     no-walk-ins policy feel like a reason rather than an obstacle.
+     ============================================================== -->
+<section class="visit" id="visit">
+  <span class="visit__field"></span>
+
+  <div class="visit__wrap">
+
+    <header class="visit__head">
+      <div class="rubric" data-reveal>
+        <span class="rubric__no">Chapter II</span>
+        <span class="rubric__name">Before you come in</span>
+        <span class="rubric__rule"></span>
+      </div>
+      <div class="visit__intro">
+        <h2 class="visit__title" data-reveal>No walk-ins.<br><em>Every visit begins with physician review.</em></h2>
+        <p class="visit__lede" data-reveal>
+          Four steps guide you from initial screening to your infusion, with the same physician
+          personally reviewing, planning, and overseeing your care.
+        </p>
+      </div>
+    </header>
+
+    <ol class="visit__steps" id="visitSteps">
+      <span class="visit__rail"><i class="visit__fill"></i></span>
+        <li class="vs" style="--i:0">
+          <span class="vs__pin"></span>
+          <span class="vs__no">01</span>
+          <i class="vs__ico ph ph-file-text"></i>
+          <h3 class="vs__title">Submit your health information</h3>
+          <p class="vs__text">Complete a brief form with your medical history, current medications, allergies, and goals. No appointment is booked and no payment is collected at this stage.</p>
+        </li>
+        <li class="vs" style="--i:1">
+          <span class="vs__pin"></span>
+          <span class="vs__no">02</span>
+          <i class="vs__ico ph ph-eyeglasses"></i>
+          <h3 class="vs__title">A physician reviews your information</h3>
+          <p class="vs__text">A physician reviews the information you submit to determine whether IV support is safe and appropriate for you and which formulation, if any, may be considered.</p>
+        </li>
+        <li class="vs" style="--i:2">
+          <span class="vs__pin"></span>
+          <span class="vs__no">03</span>
+          <i class="vs__ico ph ph-envelope-simple"></i>
+          <h3 class="vs__title">An individual eligibility decision</h3>
+          <p class="vs__text">There are no automatic approvals. Your medical history, medications, allergies, goals, and other relevant clinical factors are considered together. The physician may approve an infusion, request additional information, recommend a different formulation, or determine that IV support is not appropriate.</p>
+        </li>
+        <li class="vs" style="--i:3">
+          <span class="vs__pin"></span>
+          <span class="vs__no">04</span>
+          <i class="vs__ico ph ph-heartbeat"></i>
+          <h3 class="vs__title">Your physician-directed visit</h3>
+          <p class="vs__text">If approved, the physician determines the formulation and dose, prepares the infusion, sets the administration rate, and remains with you in the treatment room until the session is complete.</p>
+        </li>
+    </ol>
+
+    <div class="visit__close">
+      <p class="visit__honest" data-reveal>
+        Not every patient will be eligible. We offer a defined range of IV formulations and may not
+        provide the ingredients or type of support you are seeking. If your needs fall outside what
+        we can safely offer, <em>the physician will explain why.</em>
+      </p>
+      <div class="visit__cta" data-reveal>
+        <a class="btn btn--forest" href="#" data-soon data-magnetic>
+          <span>Begin screening</span><i class="ph ph-arrow-right"></i>
+        </a>
+        <a class="btn btn--line" href="tel:+19292010740"><span>929 · 201 · 0740</span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==============================================================
+     WHAT MAKES ALPHA VITAL ELITE DIFFERENT  (#advantage)
+
+     Rebuilt 8/27 from Dr. Aronov's Edits K, L, M, N, O and P (8/26).
+     Three beats, kept short on purpose: the route, the six stages,
+     and the questions. Every line of copy here is hers. Nothing is
+     written on her behalf — if a label is needed and she has not
+     supplied one, it is left out rather than invented.
+
+     Deliberately ABSENT per her instructions; do not put back:
+       Edit N — "The Sequence" · "One appointment does not mean one
+                 bag." · "Everything does not belong in one bag." ·
+                 the "only half a protocol" line
+       Edit P — "The ingredients matter. So does what happens
+                 between them." · "The formulation matters..." ·
+                 the "Begin physician screening" button here
+       Also removed: the old vitamin C / copper example box, and the
+       two old disclaimers, replaced by the single notice at the end.
+
+     Styling is section 08 of styles.css (ap- prefix); the old .adv,
+     .seq, .split, .rack and .seqx rules it replaced have been removed.
+     Behaviour is class Advantage in script.js.
+     ============================================================== -->
+<section class="ap-sec ap-sec--open" id="advantage">
+  <div class="ap-wrap ap-wrap--tight">
+
+    <header class="ap-open" data-reveal>
+      <h2 class="ap-open__title">
+        What Makes Alpha Vital Elite <em>Different?</em>
+      </h2>
+      <p class="ap-open__say">
+        It is not about putting more ingredients in a bag.<br>
+        It is about choosing the right ingredients for the right person.
+      </p>
+      <p class="ap-open__stand">
+        Researched. Separated when needed. Given in a planned order. Directed by a physician
+      </p>
+    </header>
+
+
+    <!-- ==========================================================
+         ONE · THE ROUTE
+         ========================================================== -->
+    <div class="ap-beat" data-reveal>
+      <span class="ap-beat__no">One</span>
+      <div>
+        <h3 class="ap-beat__name">The Route</h3>
+        <p class="ap-beat__say">Swallowed, it has to survive the trip. In a vein, it is already there.</p>
+      </div>
+    </div>
+
+    <div class="ap-switch" role="tablist" aria-label="Choose a route" data-reveal>
+      <button class="ap-opt is-on" type="button" role="tab" data-lane="oral"
+              aria-selected="true" aria-controls="lane-oral" id="tab-oral">
+        <i class="ph ph-pill"></i><span>By mouth</span><b>4 stops</b>
+      </button>
+      <button class="ap-opt" type="button" role="tab" data-lane="iv" tabindex="-1"
+              aria-selected="false" aria-controls="lane-iv" id="tab-iv">
+        <i class="ph ph-drop"></i><span>Through the IV</span><b>0 stops</b>
+      </button>
+    </div>
+
+    <div class="ap-stage">
+
+      <div class="ap-lane is-live" id="lane-oral" data-lane="oral"
+           role="tabpanel" aria-labelledby="tab-oral">
+
+        <div class="ap-lane__head">
+          <h4 class="ap-lane__title">The Pill Has To Make The Trip</h4>
+          <p class="ap-lane__intro">
+            The number on the supplement label tells you how much is inside the pill. It does not
+            tell you exactly how much your body will absorb. Before a swallowed nutrient can reach
+            your blood, it must travel through your digestive system and cross the gut wall. How
+            much gets through can vary.
+          </p>
+        </div>
+
+        <ol class="ap-track">
+          <li class="ap-step" style="--n:0">
+            <span class="ap-step__pin">1</span>
+            <h5 class="ap-step__name">Your Stomach</h5>
+            <p class="ap-step__what">
+              Stomach acid and digestive juices break the pill apart and release what is inside.
+              Some ingredients make it through the stomach easily. Others may be changed or broken
+              down before your body can absorb them.
+            </p>
+          </li>
+          <li class="ap-step" style="--n:1">
+            <span class="ap-step__pin">2</span>
+            <h5 class="ap-step__name">Your Gut Wall</h5>
+            <p class="ap-step__what">
+              Think of the gut wall as a row of tiny doors. The nutrient must cross this wall to
+              enter your blood. How much gets through can depend on the nutrient, its form and dose,
+              your digestive health, and what else you eat or take.
+            </p>
+          </li>
+          <li class="ap-step" style="--n:2">
+            <span class="ap-step__pin">3</span>
+            <h5 class="ap-step__name">Your Liver</h5>
+            <p class="ap-step__what">
+              Many swallowed substances travel to the liver before reaching the rest of the body.
+              The liver may change, store, or remove part of some ingredients.
+            </p>
+          </li>
+          <li class="ap-step" style="--n:3">
+            <span class="ap-step__pin">4</span>
+            <h5 class="ap-step__name">Your Bloodstream</h5>
+            <p class="ap-step__what">
+              What reaches your bloodstream is the amount your body absorbed. In some cases, that
+              may be only 10 to 20 percent of the dose promised on the bottle&rsquo;s label. It
+              usually arrives gradually over hours.
+            </p>
+          </li>
+        </ol>
+
+        <p class="ap-verdict">
+          <b>The Catch &mdash;</b> The label tells you what you swallowed. It cannot tell you
+          exactly what your body absorbed.
+        </p>
+      </div>
+
+      <div class="ap-lane" id="lane-iv" data-lane="iv"
+           role="tabpanel" aria-labelledby="tab-iv">
+
+        <div class="ap-lane__head">
+          <h4 class="ap-lane__title">Through The IV &mdash; 0 Stops</h4>
+        </div>
+
+        <ol class="ap-track ap-track--iv">
+          <li class="ap-step" style="--n:0">
+            <span class="ap-step__pin"><i class="ph-fill ph-check"></i></span>
+            <h5 class="ap-step__name">Into The Vein</h5>
+            <p class="ap-step__what">
+              The infusion enters the vein and joins your bloodstream directly. No stomach to
+              survive. No gut wall to cross.
+            </p>
+          </li>
+          <li class="ap-step" style="--n:1">
+            <span class="ap-step__pin"><i class="ph-fill ph-check"></i></span>
+            <h5 class="ap-step__name">Your Bloodstream</h5>
+            <p class="ap-step__what">
+              Within minutes, the ingredients are moving through your bloodstream. Your blood
+              carries them throughout the body, where tissues can take up what they can use.
+            </p>
+          </li>
+        </ol>
+
+        <p class="ap-verdict">
+          <b>The Point &mdash;</b> With a pill, you know how much was swallowed. Through an IV, you
+          know how much was delivered directly into circulation.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- ==========================================================
+         TWO · WHY WE DON'T PUT EVERYTHING IN ONE BAG
+         ========================================================== -->
+    <div class="ap-beat" data-reveal>
+      <span class="ap-beat__no">Two</span>
+      <div>
+        <h3 class="ap-beat__name">Why We Don&rsquo;t Put Everything In One Bag</h3>
+      </div>
+    </div>
+
+    <div class="ap-boxes">
+
+      <article class="ap-box" data-reveal>
+        <p class="ap-box__tag"><i class="ph-fill ph-warning-circle"></i> Most IV Clinics</p>
+        <h4 class="ap-box__name">The One-Bag Approach</h4>
+        <p class="ap-box__say">One bag. Everything mixed together at once.</p>
+        <p class="ap-box__body">
+          Multiple ingredients are combined and infused together without separation into individual
+          stages or a visible sequence.
+        </p>
+        <p class="ap-box__body">
+          One bag. Everything at once. Fast to hang. But has anyone considered what those
+          ingredients may do to one another inside the bag?
+        </p>
+      </article>
+
+      <article class="ap-box ap-box--ours" data-reveal>
+        <p class="ap-box__tag"><i class="ph-fill ph-flask"></i> Alpha Vital Elite</p>
+        <h4 class="ap-box__name">The Alpha Vital Elite Approach</h4>
+        <p class="ap-box__say">Separate stages. One deliberate sequence.</p>
+        <p class="ap-box__body">
+          Not every ingredient belongs in the same bag. Some ingredients are not compatible with one
+          another. Some require protection from light, while others need to be administered in a
+          particular order.
+        </p>
+        <p class="ap-box__body">
+          That is why we divide the protocol into smaller, carefully prepared stages &mdash; to help
+          protect ingredient stability and preserve the potency you are paying for.
+        </p>
+      </article>
+
+    </div>
+
+    <!-- ---------- the six stages, in order ---------- -->
+    <ol class="ap-flow" data-reveal>
+      <li class="ap-flow__stage">
+        <span class="ap-flow__art"><span class="ap-vial" style="--fluid: rgba(160,180,190,.5); --fluid2: rgba(130,158,172,.8)"></span></span>
+        <span class="ap-flow__no">01</span>
+        <span class="ap-flow__name">Trace Minerals</span>
+      </li>
+      <li class="ap-flow__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></li>
+
+      <li class="ap-flow__stage ap-flow__stage--shield">
+        <span class="ap-flow__art"><span class="ap-vial" style="--fluid: rgba(231,203,134,.6); --fluid2: rgba(214,160,60,.85)"></span><b class="ap-moon"><i class="ph-fill ph-moon"></i></b></span>
+        <span class="ap-flow__no">02</span>
+        <span class="ap-flow__name">B-Complex Vitamins</span>
+      </li>
+      <li class="ap-flow__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></li>
+
+      <li class="ap-flow__stage">
+        <span class="ap-flow__art"><span class="ap-vial" style="--fluid: rgba(190,205,196,.5); --fluid2: rgba(155,182,166,.85)"></span></span>
+        <span class="ap-flow__no">03</span>
+        <span class="ap-flow__name">Amino Acids</span>
+      </li>
+      <li class="ap-flow__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></li>
+
+      <li class="ap-flow__stage ap-flow__stage--shield">
+        <span class="ap-flow__art"><span class="ap-vial" style="--fluid: rgba(205,190,140,.55); --fluid2: rgba(176,152,84,.85)"></span><b class="ap-moon"><i class="ph-fill ph-moon"></i></b></span>
+        <span class="ap-flow__no">04</span>
+        <span class="ap-flow__name">Alpha-Lipoic Acid</span>
+      </li>
+      <li class="ap-flow__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></li>
+
+      <li class="ap-flow__stage ap-flow__stage--shield">
+        <span class="ap-flow__art"><span class="ap-vial" style="--fluid: rgba(226,196,128,.55); --fluid2: rgba(198,160,66,.85)"></span><b class="ap-moon"><i class="ph-fill ph-moon"></i></b></span>
+        <span class="ap-flow__no">05</span>
+        <span class="ap-flow__name">Vitamin&nbsp;C</span>
+      </li>
+      <li class="ap-flow__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></li>
+
+      <li class="ap-flow__stage ap-flow__stage--shield ap-flow__stage--push">
+        <span class="ap-flow__art"><span class="ap-syr"></span><b class="ap-moon"><i class="ph-fill ph-moon"></i></b></span>
+        <span class="ap-flow__no">06</span>
+        <span class="ap-flow__name">Glutathione<br>Slow IV Push</span>
+      </li>
+    </ol>
+
+    <p class="ap-key" data-reveal>
+      <span><em><i class="ph-fill ph-moon"></i></em> Protected from light</span>
+      <span><em class="ap-key--plain"></em> No cover needed</span>
+    </p>
+
+    <p class="ap-stages-say" data-reveal>Six Stages. One Deliberate Order.</p>
+    <p class="ap-body ap-body--mid" data-reveal>
+      The order is intentional. Each stage is prepared and administered separately based on
+      ingredient compatibility, light sensitivity, and the sequence in which it should be given.
+      This step-by-step approach helps protect ingredient stability and preserve potency.
+      Six stages, one at a time. Each is prepared separately, administered at its own rate, and
+      given in a deliberate order. Light-sensitive ingredients stay covered; others need no cover.
+    </p>
+
+    <!-- ---------- why the sequence matters ---------- -->
+    <h4 class="ap-why" data-reveal>Why The Sequence Matters</h4>
+
+    <div class="ap-reasons">
+      <article class="ap-reason" data-reveal>
+        <p class="ap-reason__no">1</p>
+        <h5 class="ap-reason__name"><i class="ph-duotone ph-flask"></i> Chemistry</h5>
+        <p class="ap-reason__ask">What can share a bag?</p>
+        <p class="ap-reason__body">
+          Some IV ingredients work well together. Others can change or lose strength when they are
+          mixed. Knowing their names is not enough &mdash; we check how the actual products behave
+          together before placing them in the same bag.
+        </p>
+      </article>
+
+      <article class="ap-reason" data-reveal>
+        <p class="ap-reason__no">2</p>
+        <h5 class="ap-reason__name"><i class="ph-duotone ph-moon-stars"></i> Light</h5>
+        <p class="ap-reason__ask">Why some bags need a cover</p>
+        <p class="ap-reason__body">
+          Riboflavin is vitamin&nbsp;B2. Ascorbic acid is vitamin&nbsp;C. Light can weaken both
+          vitamins while they are being prepared and infused. That is why we cover them &mdash; just
+          as some medicines come in dark bottles to protect what is inside.
+        </p>
+      </article>
+
+      <article class="ap-reason" data-reveal>
+        <p class="ap-reason__no">3</p>
+        <h5 class="ap-reason__name"><i class="ph-duotone ph-gauge"></i> Control</h5>
+        <p class="ap-reason__ask">One stage, one speed</p>
+        <p class="ap-reason__body">
+          Different ingredients may need different speeds. In one bag, everything runs at the same
+          speed. Separate stages let us control the speed of each stage and slow or stop the one
+          being given if a reaction begins. Mix everything together, and that control is lost.
+        </p>
+      </article>
+
+      <article class="ap-reason" data-reveal>
+        <p class="ap-reason__no">4</p>
+        <h5 class="ap-reason__name"><i class="ph-duotone ph-magnifying-glass"></i> Traceability</h5>
+        <p class="ap-reason__ask">A clue instead of a guess</p>
+        <p class="ap-reason__body">
+          If ten ingredients share one bag and you have a reaction, which one caused it? The bag
+          cannot tell us. With separate stages, we know which stage was running and can narrow the
+          question to a much smaller group. That gives us a clue instead of a guess.
+        </p>
+      </article>
+    </div>
+
+    <p class="ap-body ap-body--mid" data-reveal>
+      An ingredient list tells you what is being given. Our process also considers what belongs
+      together, what needs protection from light, the order in which each stage should be given,
+      how fast it should run, and how a problem could be traced.
+    </p>
+    <p class="ap-punch" data-reveal>Chemistry. Light. Control. Traceability. Every step has a reason.</p>
+
+
+    <!-- ==========================================================
+         THE ALPHA VITAL ELITE DIFFERENCE — the close
+         ========================================================== -->
+    <div class="ap-diff" data-reveal>
+      <p class="ap-diff__punch">
+        An IV bag is not a smoothie.<br>
+        The moment something enters your vein, it becomes medicine.
+      </p>
+
+      <div class="ap-diff__acts">
+        <a class="btn btn--forest" href="#infusions" data-magnetic>
+          <span>Explore the Infusions</span><i class="ph ph-arrow-right"></i>
+        </a>
+        <a class="btn btn--line" href="#inquire"><span>Begin Physician Review</span></a>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ==============================================================
+     THE PHYSICIAN  (#physician)   —   CHAPTER III
+     ============================================================== -->
+<section class="doc" id="physician">
+  <div class="doc__wrap">
+
+    <div class="rubric" data-reveal>
+      <span class="rubric__no">Chapter III</span>
+      <span class="rubric__name">Meet the physician</span>
+      <span class="rubric__rule"></span>
+    </div>
+
+    <h2 class="doc__title" data-reveal>
+      The physician who plans your infusion<br><em>also administers and monitors it.</em>
+    </h2>
+    <p class="doc__sub" data-reveal>Dr. Violeta Aronov, DO &middot; Board-Certified Anesthesiologist &middot; Founder</p>
+
+    <div class="doc__split">
+
+      <div class="doc__portrait">
+        <figure class="doc__shot">
+          <img src="assets/gen-images/dr.aronov.png"
+               alt="Dr. Violeta Aronov, DO, board-certified anesthesiologist and founder of Alpha Vital Elite"
+               loading="lazy" decoding="async">
+        </figure>
+        <figcaption class="doc__plate">
+          <b>Violeta Aronov, DO</b>
+          <span>Anesthesiology</span>
+        </figcaption>
+      </div>
+
+      <div class="doc__beats" id="docBeats">
+          <article class="beat">
+            <span class="beat__dot"></span>
+            <p class="beat__when">1995 &mdash; 1999</p>
+            <h3 class="beat__what">SUNY at Stony Brook</h3>
+            <p class="beat__body">Biochemistry research in drug, enzyme, and vitamin delivery using hyaluronic acid polymer technology &mdash; studying how molecules could be carried to their intended destination, years before that same question became part of clinical practice.</p>
+          </article>
+
+          <article class="beat">
+            <span class="beat__dot"></span>
+            <p class="beat__when">1997 &mdash; 1999</p>
+            <h3 class="beat__what">Regeneron Pharmaceuticals</h3>
+            <p class="beat__body">Tarrytown, New York. Protein-purification research using multiple biochemical techniques as part of a broader project in nerve regeneration and cellular recovery &mdash; examining how injured or severed tissue attempts to repair itself.</p>
+          </article>
+
+          <article class="beat">
+            <span class="beat__dot"></span>
+            <p class="beat__when">1999 &mdash; 2004</p>
+            <h3 class="beat__what">New York College of Osteopathic Medicine at NYIT</h3>
+            <p class="beat__body">Medical education leading to the Doctor of Osteopathic Medicine (D.O.) degree.</p>
+          </article>
+
+          <article class="beat">
+            <span class="beat__dot"></span>
+            <p class="beat__when">2004 &mdash; 2008</p>
+            <h3 class="beat__what">Anesthesia residency</h3>
+            <p class="beat__body">Residency training in clinical anesthesiology &mdash; where biochemistry unfolds in real time inside the human body, and medications, fluids, oxygenation, blood pressure, and physiologic changes are managed moment by moment in the operating room.</p>
+          </article>
+
+          <article class="beat">
+            <span class="beat__dot"></span>
+            <p class="beat__when">2008 &mdash; Present</p>
+            <h3 class="beat__what">Nearly two decades in the operating room</h3>
+            <p class="beat__body">Clinical anesthesia across general surgery, OB-GYN, vascular, gastroenterology, pediatrics, urology, dental, bariatric and orthopedic surgery.</p>
+          </article>
+
+          <article class="beat">
+            <span class="beat__dot"></span>
+            <p class="beat__when">2026 &mdash; Present</p>
+            <h3 class="beat__what">Alpha Vital Elite Precision Medical IV</h3>
+            <p class="beat__body">Each infusion protocol is informed by nearly two decades of clinical anesthesiology and experience interpreting hydration status, blood pressure, medication response, fluid balance, and electrolyte shifts.</p>
+          </article>
+      </div>
+
+    </div>
+
+
+    <div class="doc__cta" data-reveal>
+      <a class="btn btn--forest" href="#" data-soon><span>Read the full biography</span><i class="ph ph-arrow-right"></i></a>
+      <a class="btn btn--line" href="#" data-soon><span>The research she cites</span></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==============================================================
+     FREQUENTLY ASKED  (#faq)
+     Native <details> / <summary> — no JavaScript at all, so this cannot
+     break, and every answer is in the DOM whether or not it is open.
+
+     EVERY ANSWER BELOW IS DRAWN FROM COPY ALREADY APPROVED ELSEWHERE ON THIS
+     PAGE — the hero disclaimer, the shelf stat block, the visit steps, the
+     chain of custody and the footer legal. Nothing here is new claim-making.
+
+     STILL NEEDS HER ANSWERS, then add each as a new <details>:
+        · Do you take insurance
+        · Do I need bloodwork first · Can I eat beforehand
+        · Does it hurt · Cancellation and rescheduling · Where do I park
+     ============================================================== -->
+<section class="faq" id="faq">
+  <div class="faq__wrap">
+
+    <header class="faq__head">
+      <p class="faq__eyebrow" data-reveal><i class="ph-duotone ph-question"></i> Common questions</p>
+      <h2 class="faq__title" data-reveal>Before you<br><em>get in touch.</em></h2>
+    </header>
+
+    <div class="faq__list" data-reveal>
+
+      <details class="fq">
+        <summary class="fq__q">Do I need an appointment?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a"><p>Yes. All visits are by appointment only; walk-ins are not accepted. Alpha Vital Elite is an outpatient medical wellness practice, not a hospital. Before an infusion can be scheduled, a physician must review your health information to determine whether the nutritional and antioxidant IV support we offer falls within our scope and can be provided safely and appropriately in our setting. If your medical needs fall outside our services, you may be advised to seek care from an appropriate physician or medical facility.</p></div>
+      </details>
+
+      <details class="fq">
+        <summary class="fq__q">What happens before I can book?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a"><p>You send your medical history, current medications and allergies. Dr.&nbsp;Violeta Aronov or another physician on the Alpha Vital Elite medical team reviews it and decides whether IV therapy is appropriate for you and which formula fits. Nothing is booked and nothing is charged at that stage.</p></div>
+      </details>
+
+      <details class="fq">
+        <summary class="fq__q">Is there a physician review fee?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a">
+          <p>Yes. Before an infusion can be scheduled, a physician takes the time to review your safety-screening answers, medical history, medications, allergies, relevant laboratory results or medical records, and wellness goals. This individualized review helps determine whether the IV support available at Alpha Vital Elite is safe and appropriate for you &mdash; and, when appropriate, which option may best meet your needs.</p>
+          <p>The physician review fee is $100. If you are approved for an infusion, the full $100 is applied toward your first approved infusion.</p>
+          <p>Occasionally, the review may show that additional information is needed or that the services available at our practice are not the right fit for you. In that situation, the fee covers the physician&rsquo;s time and clinical expertise in carefully completing your review and providing a professional determination, so it is not refundable.</p>
+        </div>
+      </details>
+
+      <details class="fq">
+        <summary class="fq__q">Who personally provides and monitors my infusion?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a">
+          <p>At Alpha Vital Elite, physician involvement continues throughout your visit. Your infusion is personally provided and monitored by Dr.&nbsp;Violeta Aronov or another physician on the Alpha Vital Elite medical team.</p>
+          <p>The physician providing your care reviews your medical history, determines and verifies the appropriate formulation and doses, prepares and starts your infusion, sets the flow rate, and remains with you through completion. Your infusion is not handed off to a technician; a physician remains directly responsible for your care from start to finish.</p>
+        </div>
+      </details>
+
+      <details class="fq">
+        <summary class="fq__q">How long does an infusion take?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a">
+          <p>The time depends on which infusion you receive.</p>
+          <p>A glutathione injection takes about 15 minutes to give, with about 30 minutes planned for the entire visit. Some of our signature infusions take about one hour. Our longest infusions take approximately two and a half to three hours.</p>
+          <p>We do not rush your infusion. Giving certain ingredients too quickly may cause breathing problems, chest discomfort, nausea, vomiting, or other side effects. Your infusion is given at a careful rate, with physician monitoring throughout your visit, because your safety comes first.</p>
+        </div>
+      </details>
+
+      <details class="fq">
+        <summary class="fq__q">Can I come in if I have a chronic condition?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a">
+          <p>Maybe. It depends on your condition, your current health, and the care you need.</p>
+          <p>Many of our patients live with chronic conditions. Before we can offer an infusion, you must tell us about your condition, symptoms, medications, supplements, treatments, and the doctors caring for you. A physician will review this information and decide whether supportive IV care is safe for you and within the services we provide.</p>
+          <p>Our infusions may support hydration, nutritional replenishment, normal antioxidant defenses, immune function, and joint, skin, or liver wellness. They do not treat rheumatoid arthritis, fatty liver disease, or any other chronic illness.</p>
+          <p>Alpha Vital Elite is not a hospital, urgent care center, primary care office, or replacement for your specialist. When appropriate and with your permission, we may communicate with your healthcare provider. Being under specialist care or receiving treatment does not automatically rule you out.</p>
+          <p>If your needs are outside what we can safely provide, we will tell you clearly and guide you toward a more appropriate doctor or facility.</p>
+        </div>
+      </details>
+
+      <details class="fq">
+        <summary class="fq__q">Will an infusion treat my condition?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a">
+          <p>No. Our infusions do not treat or cure diseases. They provide supportive care only and do not replace your medications, primary care doctor, specialist, or medical treatment.</p>
+          <p>We do, however, specialize in physician-directed supportive IV care. Our approach is informed by published research about different vitamin deficiencies and oxidative stress in chronic conditions such as rheumatoid arthritis, psoriasis, fatty liver disease, fibromyalgia, Lyme disease with joint symptoms, ulcerative colitis, and Crohn&rsquo;s disease.</p>
+          <p>Oxidative stress means the body is having trouble balancing harmful molecules. Some studies have examined individual antioxidants in people with chronic conditions. However, this research does not prove that our combined IV infusions treat these conditions or will benefit every patient.</p>
+          <p>A physician must review your condition, medications, current treatment, and overall health before deciding whether supportive IV care is safe and appropriate for you. Our supportive IV formulations are not FDA-approved to diagnose, treat, cure, mitigate, prevent, or reverse any disease or medical condition. Results may vary, and no benefit or outcome is promised.</p>
+        </div>
+      </details>
+
+      <details class="fq">
+        <summary class="fq__q">What if I am not eligible?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a">
+          <p>Here is what happens:</p>
+          <ol>
+            <li><strong>A physician reviews your information.</strong> We look at your condition, symptoms, medications, treatments, allergies, and any available laboratory results.</li>
+            <li><strong>We decide whether an infusion is safe for you.</strong> We also decide whether the care you need is something our office can safely provide.</li>
+            <li><strong>We may ask for more information.</strong> Before making a final decision, we may request laboratory results, medical records, or information from your primary care doctor or specialist.</li>
+            <li><strong>If an infusion is not appropriate, we will not approve it.</strong> This does not mean we do not want to help you. It means your needs may be outside the limited supportive care our practice provides.</li>
+            <li><strong>We will explain the decision.</strong> Alpha Vital Elite is not a hospital, urgent care center, primary care office, or specialty treatment center. If you need a different level or type of care, we will guide you back to your doctor, specialist, or a facility better equipped to help you.</li>
+          </ol>
+          <p>We only provide an infusion when a physician believes it is safe, appropriate, and within the services our practice can responsibly offer.</p>
+        </div>
+      </details>
+      <!-- ---------- moved down from #advantage on Dr. Aronov's instruction,
+           8/27. Her copy from Edit K (8/26), unchanged; only the markup is
+           the FAQ's own, so these read as part of the same list. ---------- -->
+
+      <details class="fq">
+        <summary class="fq__q">What is the rationale for including each ingredient in this specific IV infusion?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a">
+          <p><strong>Every ingredient must have a clear reason for being included.</strong></p>
+          <p>Dr.&nbsp;Aronov&rsquo;s background in biochemistry and nearly 20 years of experience as a board-certified anesthesiologist guide how each infusion is evaluated.</p>
+          <p>Before including an ingredient, she considers:</p>
+          <ul>
+            <li>What does the ingredient normally do in the body?</li>
+            <li>What supportive purpose does it serve in this specific infusion?</li>
+            <li>Is the proposed dose and IV route appropriate?</li>
+            <li>Is it safe with the patient&rsquo;s health conditions, allergies, medications, and available laboratory results?</li>
+            <li>Can it be used safely with the other ingredients, or should it be given separately?</li>
+            <li>What risks or limitations should the patient understand?</li>
+          </ul>
+          <p>The review is informed by resources from the National Institutes of Health, peer-reviewed medical literature indexed in PubMed, and guidance from established medical organizations. An ingredient is never included simply because it is popular.</p>
+          <p>Research involving an individual ingredient does not prove that it will benefit every patient. It also does not establish that a combined IV formulation is safe or effective for treating any disease or medical condition. The final formulation and eligibility decision are based on an individual physician review.</p>
+        </div>
+      </details>
+
+      <details class="fq">
+        <summary class="fq__q">Why isn&rsquo;t everything mixed in one bag?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a">
+          <p><strong>Not every ingredient belongs in the same bag.</strong></p>
+          <p>Each ingredient has its own needs, including the correct fluid, concentration, acidity level, light protection, and infusion rate.</p>
+          <p>Before ingredients are combined, their compatibility must be considered. Ingredients that do not mix well may become less stable, change when placed together, lose strength, or form tiny particles called precipitates.</p>
+          <p>For these reasons, we do not automatically place a long list of ingredients into one bag. Ingredients are combined only when they are considered compatible in that specific preparation. When needed, they are protected from light or given in separate bags and steps, with an appropriate fluid and rate for each stage.</p>
+          <p>This approach may take longer, but it allows every stage to be prepared and administered carefully. It does not eliminate all infusion risks or guarantee a particular result.</p>
+        </div>
+      </details>
+
+      <details class="fq">
+        <summary class="fq__q">Why does the infusion order matter?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a">
+          <p><strong>Think about building a house.</strong></p>
+          <p>You would not put all the workers, tools, and materials into one big pile. You would use each one at the proper time.</p>
+          <p>An infusion also needs a plan. Some infusions begin with minerals and vitamins. Amino acids and antioxidants may be given in later steps.</p>
+          <p>Some ingredients can go together. Others need their own bag because they may not mix well, may need protection from light, or must be given at a different speed.</p>
+          <p>Giving the infusion in steps also allows the physician to watch how you feel. If needed, the physician can slow down, change, or stop the infusion.</p>
+          <p>The order is chosen for careful preparation and monitoring. It does not remove every risk or guarantee a particular result.</p>
+        </div>
+      </details>
+
+      <details class="fq">
+        <summary class="fq__q">Why do so many infusions include antioxidants?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a">
+          <p>Your body naturally makes tiny molecules called free radicals. A small amount is normal. When too many build up and the body cannot keep them balanced, it is called oxidative stress.</p>
+          <p>Over a lifetime, the body is exposed to sunlight, smoke, pollution, alcohol, illness, inflammation, and everyday stress. Years of oxidative stress may add to normal wear and damage inside the body&rsquo;s cells.</p>
+          <p>Oxidative stress has also been studied in many chronic illnesses, especially conditions involving ongoing inflammation. Think of antioxidants as helpers that support the body&rsquo;s own cleanup and protection systems. This is why selected antioxidant ingredients are included in several Alpha Vital Elite infusions.</p>
+          <p>Antioxidant support cannot erase a lifetime of damage. It has also not been proven to treat, cure, or reverse a chronic illness. Each ingredient must have a clear reason for being included, and a physician must decide whether it is safe and appropriate for the individual patient.</p>
+        </div>
+      </details>
+
+      <details class="fq">
+        <summary class="fq__q">Why can&rsquo;t I simply choose an IV from a menu?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a">
+          <p><strong>Because the same infusion may be appropriate for one person and unsafe for another.</strong></p>
+          <p>Cancer care, an active flare of a chronic illness, heart or kidney or liver problems, fever, infection, pregnancy, abnormal vital signs, or certain medications may completely change the plan.</p>
+          <p>Sometimes the safest answer is:</p>
+          <ul>
+            <li>Regular medical care before any IV</li>
+            <li>No infusion at all</li>
+            <li>More medical information</li>
+            <li>New laboratory results</li>
+            <li>A conversation with a specialist</li>
+            <li>A different infusion</li>
+          </ul>
+          <p>You tell us what concerns you. Dr.&nbsp;Aronov determines whether an IV is appropriate and which option, if any, fits your needs.</p>
+        </div>
+      </details>
+
+      <details class="fq">
+        <summary class="fq__q">What does &ldquo;physician-directed&rdquo; mean?<i class="ph ph-plus"></i></summary>
+        <div class="fq__a">
+          <p><strong>It means you are not expected to select or prescribe your own IV from a menu.</strong></p>
+          <p>Before any infusion, a physician reviews:</p>
+          <ul>
+            <li>What you hope to address with IV support</li>
+            <li>Your medical history</li>
+            <li>Your current symptoms</li>
+            <li>Your medications and supplements</li>
+            <li>Your allergies</li>
+            <li>Your relevant laboratory results</li>
+          </ul>
+          <p>The physician then:</p>
+          <ul>
+            <li>Determines whether IV support is appropriate for you</li>
+            <li>Confirms whether it can be provided within the scope of this practice</li>
+            <li>Selects the appropriate ingredients and doses</li>
+            <li>Determines the fluid volume, sequence, and infusion rate</li>
+            <li>Personally provides and monitors your care from start to finish</li>
+          </ul>
+          <p>The first question is not, &ldquo;Which IV would you like?&rdquo;</p>
+          <p>It is, &ldquo;Should you receive an IV at all &mdash; and, if so, which approach is appropriate for you?&rdquo;</p>
+        </div>
+      </details>
+
+    </div>
+
+    <div class="faq__foot" data-reveal>
+      <p>Something not answered here?</p>
+      <div class="faq__acts">
+        <a class="btn btn--forest" href="#" data-soon data-magnetic>
+          <span>Begin screening</span><i class="ph ph-arrow-right"></i>
+        </a>
+        <a class="btn btn--line" href="tel:+19292010740"><span>929 · 201 · 0740</span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==============================================================
+     THE GUIDE LIBRARY  (#guides)   —   PLACEHOLDER, TO BUILD
+     ============================================================== -->
+<section class="slot slot--cream" id="guides">
+  <div class="slot__wrap">
+    <span class="slot__flag">Placeholder</span>
+    <p class="slot__eyebrow"><i class="ph-duotone ph-download-simple"></i> Physician-written guides</p>
+    <h2 class="slot__title">The guide library</h2>
+    <p class="slot__lede">Email capture in exchange for the guides she already writes. Feeds the same CRM as the screening form and gives you a list of warm prospects who self-identified by topic.</p>
+    <ul class="slot__todo">
+        <li>Live now &mdash; "Zinc, Simply: The Tiny Mineral With a Very Big Job", 12 pages</li>
+        <li>Slim band rather than a full section &mdash; cover thumbnail, one line, email field</li>
+        <li>Wire the submit to whichever CRM the screening form ends up on</li>
+        <li>NEEDS &mdash; a decision on this vs the Stan Store route Liana suggested</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ==============================================================
+     INQUIRE - question form (embedded from the contact page)
+     ============================================================== -->
+<section class="inq" id="inquire">
+  <div class="inq__wrap">
+
+    <div class="inq__intro">
+      <p class="inq__eyebrow">General questions</p>
+      <h2 class="inq__title">Have a question?<br><em>Send it here.</em></h2>
+      <p class="inq__lede">
+        Use this form for general questions about directions, parking, pricing, hours, what to
+        expect during a visit, or how we coordinate with your own physician.
+      </p>
+
+      <div class="inq__notice">
+        <span class="inq__notice-tag"><i class="ph-fill ph-warning"></i> Please read</span>
+        <p><b>This form cannot be used to request or schedule an appointment.</b> Your message goes
+           to our office, not to the appointment schedule.</p>
+        <p><b>Please do not enter medical history, symptoms, medications, or diagnoses here.</b>
+           This is not a secure medical channel.</p>
+        <p><b>This form is not monitored for emergencies.</b> If you are experiencing a medical
+           emergency, call&nbsp;911 or go to your nearest emergency department.</p>
+      </div>
+
+      <div class="inq__direct">
+        <a class="inq__line" href="tel:+19292010740"><i class="ph ph-phone"></i> 929 &middot; 201 &middot; 0740</a>
+        <a class="inq__line" href="mailto:contact@precisionmedicaliv.com"><i class="ph ph-envelope-simple"></i> contact@precisionmedicaliv.com</a>
+      </div>
+    </div>
+
+    <div class="inq__formcol">
+      <div class="inq__slot" id="inqSlot">
+        <span class="inq__lab">Question form</span>
+        <iframe id="inqFrame" title="Alpha Vital Elite IV question form"
+                src="" loading="lazy"></iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==============================================================
+     FOOTER
+     ============================================================== -->
+<footer class="foot" id="contact">
+  <span class="foot__glow"></span>
+
+  <div class="foot__wrap">
+
+    <!-- closing call -->
+    <div class="foot__call">
+      <p class="foot__eyebrow"><i class="ph-duotone ph-seal-check"></i> By physician review only</p>
+      <h2 class="foot__title">Physician review<br>comes <em>first</em>.</h2>
+      <p class="foot__lede">
+        Appointments only. Tell us what you hope to address and submit your health information.
+        A physician personally reviews it to determine whether IV support is appropriate for you
+        and, if so, which option may best fit your needs.
+      </p>
+      <div class="foot__acts">
+        <a class="rx__btn rx__btn--solid" href="#" data-soon>
+          <span>Begin screening</span><i class="ph ph-arrow-right"></i>
+        </a>
+        <a class="rx__btn" href="tel:+19292010740"><span>929 · 201 · 0740</span><i class="ph ph-phone"></i></a>
+      </div>
+    </div>
+
+    <!-- the plate -->
+    <div class="foot__grid">
+
+      <div class="foot__col foot__col--wide">
+        <h3 class="foot__h">Visit</h3>
+        <address class="foot__addr">
+          Alpha Vital Elite IV<br>
+          79-01 Metropolitan Avenue<br>
+          Middle Village, NY 11379
+        </address>
+        <a class="foot__line" href="tel:+19292010740"><i class="ph ph-phone"></i> 929 · 201 · 0740</a>
+        <a class="foot__line" href="mailto:contact@precisionmedicaliv.com"><i class="ph ph-envelope-simple"></i> contact@precisionmedicaliv.com</a>
+        <a class="foot__line" href="https://www.instagram.com/dr.violetaaronov/" target="_blank" rel="noopener"><i class="ph ph-instagram-logo"></i> Follow the practice</a>
+        <p class="foot__served">Serving Queens · Brooklyn · Long Island · Greater New York</p>
+      </div>
+
+      <div class="foot__col">
+        <h3 class="foot__h">Infusions</h3>
+        <ul class="foot__list">
+          <li><a href="#" data-soon>GLyNAC Healthy Aging</a></li>
+          <li><a href="#" data-soon>Glutathione IV Injection</a></li>
+          <li><a href="#" data-soon>Antioxidant &times;3 Reset</a></li>
+          <li><a href="#" data-soon>Immun-O-Boost IV Support</a></li>
+          <li><a href="#" data-soon>Revive IV Support</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h3 class="foot__h">&nbsp;</h3>
+        <ul class="foot__list">
+          <li><a href="#" data-soon>LIQUIXO Muscle Recovery</a></li>
+          <li><a href="#" data-soon>Stress &amp; Brain Wellness</a></li>
+          <li><a href="#" data-soon>Joint &amp; Skin Wellness</a></li>
+          <li><a href="#" data-soon>Fatty Liver Support</a></li>
+          <li><a href="#" data-soon>Customized IV Infusion</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h3 class="foot__h">The practice</h3>
+        <ul class="foot__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#physician">About Dr. Aronov</a></li>
+          <li><a href="#" data-soon>Research</a></li>
+          <li><a href="#inquire">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- legal -->
+    <div class="foot__legal">
+      <p>
+        IV services provided by Alpha Vital Elite IV are intended as supportive care and are
+        designed to complement&mdash;not replace&mdash;appropriate primary or specialty medical
+        treatment. They are not intended to diagnose, treat, cure, mitigate, prevent or reverse any
+        disease, medical condition or inflammatory disorder, and have not been evaluated by the FDA
+        for those purposes. Appointments only; physician review and eligibility determination are
+        required before scheduling. Not every patient is eligible. Individual results may vary, and
+        no outcome is guaranteed.
+      </p>
+      <ul class="foot__mini">
+        <li><a href="policies/disclaimer.html">Disclaimer</a></li>
+        <li><a href="policies/refund-policy.html">Refund Policy</a></li>
+        <li><a href="policies/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="policies/terms.html">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- the wordmark, oversized along the bottom edge -->
+    <p class="foot__mark">Alpha Vital Elite</p>
+
+    <!-- bar -->
+    <div class="foot__bar">
+      <p class="foot__copy">© <span id="footYear">2026</span> Alpha Vital Elite IV. All rights reserved.</p>
+
+      <a class="credit" href="https://www.elanstechworld.com" target="_blank" rel="noopener">
+        <span class="credit__by">Designed &amp; built by</span>
+        <img class="credit__logo" src="https://www.elanstechworld.com/assets/images/Elanslogo.jpeg"
+             alt="Elan's Tech World" width="520" height="386" loading="lazy" decoding="async">
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ==============================================================
+     THE DOCK
+     ============================================================== -->
+<button class="totop" id="toTop" type="button">
+  <i class="ph ph-arrow-up"></i>
+  <span>Top</span>
+</button>
+
+<div class="fab" id="fab">
+  <ul class="fab__list" id="fabList">
+    <li>
+      <button class="fab__act fab__act--quiz" type="button" data-open-quiz>
+        <span class="fab__label">Which infusion suits me?</span>
+        <span class="fab__ico"><i class="ph-fill ph-sparkle"></i></span>
+      </button>
+    </li>
+    <li>
+      <a class="fab__act" href="tel:+19292010740">
+        <span class="fab__label">929 · 201 · 0740</span>
+        <span class="fab__ico"><i class="ph-fill ph-phone"></i></span>
+      </a>
+    </li>
+    <li>
+      <a class="fab__act" href="mailto:contact@precisionmedicaliv.com">
+        <span class="fab__label">Email the practice</span>
+        <span class="fab__ico"><i class="ph-fill ph-envelope-simple"></i></span>
+      </a>
+    </li>
+    <li>
+      <a class="fab__act" href="https://www.instagram.com/dr.violetaaronov/" target="_blank" rel="noopener">
+        <span class="fab__label">Instagram</span>
+        <span class="fab__ico"><i class="ph-fill ph-instagram-logo"></i></span>
+      </a>
+    </li>
+  </ul>
+
+  <button class="fab__toggle" id="fabToggle" type="button">
+    <i class="ph ph-chat-circle-dots fab__i fab__i--open"></i>
+    <i class="ph ph-x fab__i fab__i--close"></i>
+  </button>
+</div>
+
+
+<!-- ==============================================================
+     THE QUIZ MODAL
+     The question set and the ten protocols live in script.js
+     (DRIPS + ASKS) and match this menu exactly.
+     ============================================================== -->
+<div class="modal" id="quiz">
+  <div class="modal__veil" data-close-quiz></div>
+
+  <div class="modal__box">
+    <header class="modal__head">
+      <div>
+        <p class="modal__eyebrow"><i class="ph-fill ph-sparkle"></i> Guided by AI</p>
+        <h2 class="modal__title">Which infusion suits you?</h2>
+      </div>
+      <button class="modal__x" type="button" data-close-quiz>
+        <i class="ph ph-x"></i>
+      </button>
+    </header>
+
+    <div class="modal__prog" id="quizProg"></div>
+
+    <div class="modal__stage" id="quizStage"></div>
+
+    <footer class="modal__foot">
+      <button class="modal__nav" id="quizBack" type="button" hidden>
+        <i class="ph ph-arrow-left"></i> Back
+      </button>
+      <p class="modal__legal">A starting point, not a medical opinion. Dr.&nbsp;Aronov reviews every request.</p>
+      <button class="modal__nav" id="quizAgain" type="button" hidden>
+        Start over <i class="ph ph-arrow-counter-clockwise"></i>
+      </button>
+    </footer>
+  </div>
+</div>
+
+
+<!-- GSAP must be on window before the deferred module runs -->
+<!-- ==============================================================
+     UNDER-CONSTRUCTION POPUP
+     ============================================================== -->
+<div class="soon" id="soonModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="soonTitle">
+  <div class="soon__backdrop" data-soon-close></div>
+  <div class="soon__card" role="document">
+    <button class="soon__x" type="button" aria-label="Close" data-soon-close><i class="ph ph-x"></i></button>
+    <span class="soon__badge"><i class="ph-fill ph-hard-hat"></i> Under construction</span>
+    <h2 class="soon__title" id="soonTitle">This part isn't ready yet</h2>
+    <p class="soon__text">
+      We're putting the finishing touches on this section. It'll be available very soon &mdash;
+      thank you for your patience. In the meantime, we'd be glad to hear from you.
+    </p>
+    <div class="soon__acts">
+      <a class="btn btn--forest" href="#inquire" data-soon-ask><span>Send us a question</span><i class="ph ph-arrow-down"></i></a>
+      <a class="btn btn--line" href="tel:+19292010740"><span>929 &middot; 201 &middot; 0740</span><i class="ph ph-phone"></i></a>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<script src="script.js" type="module"></script>
+</body>
+</html>
