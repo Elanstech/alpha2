@@ -1882,7 +1882,7 @@ class Quiz {
         this.swap(`
             <div class="rx">
                 <div class="rx__top">
-                    <img class="rx__bag" src="/assets/drips/${top.img}.png" alt="${top.name}">
+                    <img class="rx__bag" src="https://precisionmedicaliv.vercel.app/assets/drips/${top.img}.png" alt="${top.name}">
                     <div>
                         <p class="rx__kick">Your starting point</p>
                         <h3 class="rx__name">${top.name}</h3>
